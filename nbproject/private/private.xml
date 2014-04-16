@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="EJB">
+            <file>file:/C:/Users/Vedang%20Rane/Desktop/Shopping%20Cart/src/java/hibdao/ProductDaoInterface.java</file>
+            <file>file:/C:/Users/Vedang%20Rane/Desktop/Shopping%20Cart/src/java/action/LoginAction.java</file>
+            <file>file:/C:/Users/Vedang%20Rane/Desktop/Shopping%20Cart/src/java/hibdao/LoginDao.java</file>
+            <file>file:/C:/Users/Vedang%20Rane/Desktop/Shopping%20Cart/src/java/hibdao/ProductDao.java</file>
+            <file>file:/C:/Users/Vedang%20Rane/Desktop/Shopping%20Cart/src/java/hibernate/Customer.hbm.xml</file>
+            <file>file:/C:/Users/Vedang%20Rane/Desktop/Shopping%20Cart/src/java/hibernate/Customer.java</file>
+            <file>file:/C:/Users/Vedang%20Rane/Desktop/Shopping%20Cart/web/index.jsp</file>
+            <file>file:/C:/Users/Vedang%20Rane/Desktop/Shopping%20Cart/src/java/struts.xml</file>
+            <file>file:/C:/Users/Vedang%20Rane/Desktop/Shopping%20Cart/src/java/hibernate/Product.java</file>
+            <file>file:/C:/Users/Vedang%20Rane/Desktop/Shopping%20Cart/web/home.jsp</file>
+            <file>file:/C:/Users/Vedang%20Rane/Desktop/Shopping%20Cart/web/WEB-INF/pages/category.jsp</file>
+            <file>file:/C:/Users/Vedang%20Rane/Desktop/Shopping%20Cart/src/java/action/ShoppingAction.java</file>
+            <file>file:/C:/Users/Vedang%20Rane/Desktop/Shopping%20Cart/web/WEB-INF/pages/register.jsp</file>
+            <file>file:/C:/Users/Vedang%20Rane/Desktop/Shopping%20Cart/src/java/action/AdminAction.java</file>
+            <file>file:/C:/Users/Vedang%20Rane/Desktop/Shopping%20Cart/web/WEB-INF/pages/viewProduct.jsp</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/Vimal/Downloads/Shopping_Cart-2014-04-13/Shopping%20Cart/web/WEB-INF/pages/viewProduct.jsp</file>
+            <file>file:/C:/Users/Vimal/Downloads/Shopping_Cart-2014-04-13/Shopping%20Cart/src/java/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/Vimal/Downloads/Shopping_Cart-2014-04-13/Shopping%20Cart/web/WEB-INF/pages/category.jsp</file>
+        </group>
+    </open-files>
+</project-private>

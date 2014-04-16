@@ -1,0 +1,68 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package controller;
+
+
+import hibernate.Product;
+import hibdao.ProductDao;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Collection;
+import javax.ejb.EJB;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import shoppingCart.ShoppingCart;
+
+/**
+ *
+ * @author Anand
+ */
+@WebServlet(name = "SearchServlet",
+        urlPatterns = {"/productSearch"})
+public class SearchServlet extends HttpServlet {
+    
+//     @EJB
+//    private ProductDaoInterface productDao;
+
+     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            
+       ProductDao prodDao = new ProductDao();  
+     String userPath = request.getServletPath();
+  
+        HttpSession session = request.getSession();
+        Collection<Product> searchProducts;
+
+   
+       if(userPath.equals("/productSearch")){
+           System.out.println("Inside Product Search");
+            userPath = "/productSearch";
+            String keyword = request.getParameter("search");
+            System.out.println("Keyword--->"+keyword);
+            if(keyword != null){
+                searchProducts = prodDao.getProducts(keyword);    
+                session.setAttribute("searchProducts", searchProducts);
+                System.out.println("categoryProducts-->"+searchProducts.size());
+            }
+        }   
+
+        // use RequestDispatcher to forward request internally
+        String url = "/WEB-INF/pages/" + "productSearch" + ".jsp";
+
+        try {
+            request.getRequestDispatcher(url).forward(request, response);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    
+
+}

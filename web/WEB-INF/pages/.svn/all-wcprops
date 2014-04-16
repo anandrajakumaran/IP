@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/shoppingcart2/!svn/ver/2/trunk/web/WEB-INF/pages
+END
+register.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/shoppingcart2/!svn/ver/3/trunk/web/WEB-INF/pages/register.jsp
+END
+checkout.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/shoppingcart2/!svn/ver/7/trunk/web/WEB-INF/pages/checkout.jsp
+END
+productSearch.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/shoppingcart2/!svn/ver/7/trunk/web/WEB-INF/pages/productSearch.jsp
+END
+confirmation.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/shoppingcart2/!svn/ver/2/trunk/web/WEB-INF/pages/confirmation.jsp
+END
+cart.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/shoppingcart2/!svn/ver/7/trunk/web/WEB-INF/pages/cart.jsp
+END
+viewProduct.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/shoppingcart2/!svn/ver/7/trunk/web/WEB-INF/pages/viewProduct.jsp
+END
+registerFailure.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/shoppingcart2/!svn/ver/2/trunk/web/WEB-INF/pages/registerFailure.jsp
+END
+category.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/shoppingcart2/!svn/ver/7/trunk/web/WEB-INF/pages/category.jsp
+END
+registerSuccess.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/shoppingcart2/!svn/ver/2/trunk/web/WEB-INF/pages/registerSuccess.jsp
+END

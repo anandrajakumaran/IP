@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 24, 2014 3:50:11 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="hibernate.Customer" table="customer" catalog="shoppingcart">
+        <id name="id" type="string">
+            <column name="id" length="20" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" type="string">
+            <column name="password" length="20" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="45" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" not-null="true" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="45" not-null="true" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="45" not-null="true" />
+        </property>
+        <property name="adminFlag" type="string">
+            <column name="admin_flag" length="1" not-null="true" />
+        </property>
+        <set name="customerOrders" table="customer_order" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="customer_id" length="20" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.CustomerOrder" />
+        </set>
+    </class>
+</hibernate-mapping>

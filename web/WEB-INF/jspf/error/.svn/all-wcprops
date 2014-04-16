@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/shoppingcart2/!svn/ver/2/trunk/web/WEB-INF/jspf/error
+END
+500.jspf
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/shoppingcart2/!svn/ver/2/trunk/web/WEB-INF/jspf/error/500.jspf
+END
+403.jspf
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/shoppingcart2/!svn/ver/2/trunk/web/WEB-INF/jspf/error/403.jspf
+END
+404.jspf
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/shoppingcart2/!svn/ver/2/trunk/web/WEB-INF/jspf/error/404.jspf
+END

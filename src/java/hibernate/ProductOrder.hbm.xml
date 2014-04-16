@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 24, 2014 3:50:11 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class catalog="shoppingcart" name="hibernate.ProductOrder" table="product_order">
+    <composite-id class="hibernate.ProductOrderId" name="productOrderId">
+      <key-property name="customerOrderId" type="string">
+        <column length="20" name="customer_order_id"/>
+      </key-property>
+      <key-property name="productId" type="int">
+        <column name="product_id"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="hibernate.Product" fetch="select" insert="false" name="product" update="false">
+      <column name="product_id" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="hibernate.CustomerOrder" fetch="select" insert="false" name="customerOrder" update="false">
+      <column length="20" name="customer_order_id" not-null="true"/>
+    </many-to-one>
+    <property name="quantity" type="short">
+      <column name="quantity" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

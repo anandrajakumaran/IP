@@ -1,0 +1,151 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+<constant name="struts.enable.DynamicMethodInvocation"
+		value="false" />
+	<constant name="struts.devMode" value="false" />
+        
+    <package name="example" namespace="/example" extends="struts-default">
+        <action name="HelloWorld" class="example.HelloWorld">
+            <result>/example/HelloWorld.jsp</result>
+        </action>
+    </package>
+	<package name="default" extends="struts-default" namespace="/">
+                    <result-types>
+                        <result-type name="imageBytesResult"
+                         class="action.ImageResult" />
+                        
+                         <result-type name="chartResult"
+                         class="action.ChartResult"  />
+                    </result-types>
+           
+                    
+             <!--Login Mappings-->
+                <action name="login"
+			class="action.LoginAction" method="getLoginUser">
+			<result name="success" type="dispatcher">/index.jsp</result>
+			<result name="error" type="redirect">/loginError.jsp</result>
+		</action>
+                
+                <action name="register"
+			class="action.RegisterAction" >
+			<result name="success">/WEB-INF/pages/register.jsp</result>
+		</action>
+                
+                <!--Register Mappings-->
+                <action name="register"
+			class="action.RegisterAction" >
+			<result name="success">/WEB-INF/pages/register.jsp</result>
+		</action>
+                
+                <action name="saveRegister"
+			class="action.RegisterAction" method="saveRegister">
+			<result name="success">/WEB-INF/pages/registerSuccess.jsp</result>
+                        <result name="failure">/WEB-INF/pages/registerFailure.jsp</result>
+                        <result name="error">/WEB-INF/pages/register.jsp</result>
+		</action>
+                
+                <!--Display products based on category-->
+                <action name="category"
+			class="action.ShoppingAction" method="showCategoryProducts">
+			<result name="success">/WEB-INF/pages/category.jsp</result>
+                        <result name="failure">/WEB-INF/pages/registerFailure.jsp</result>
+                        <result name="error">/WEB-INF/pages/register.jsp</result>
+		</action>
+                
+                <!--Display images for products -->
+          
+               <action name="showImage"
+			class="action.ImageAction" >
+                        <result name="success" type="imageBytesResult"> </result>
+
+		</action>
+                <action name="viewProduct"
+			class="action.ShoppingAction" method="viewProduct">
+			<result name="success">/WEB-INF/pages/viewProduct.jsp</result>
+		</action>
+                <action name="searchProduct"
+			class="action.ShoppingAction" method="searchProduct">
+			<result name="success">/WEB-INF/pages/productSearch.jsp</result>
+		</action>
+                  <action name="checkout"
+			class="action.ShoppingAction" method="checkout">
+			<result name="success">/WEB-INF/pages/checkout.jsp</result>
+		</action>
+                <action name="purchase"
+			class="action.ShoppingAction" method="purchase">
+			<result name="success">/WEB-INF/pages/confirmation.jsp</result>
+                        <result name="failure">/WEB-INF/pages/checkout.jsp</result>
+		</action>
+                   <action name="addToCart"
+			class="action.CartAction" method="addToCart">
+			<result name="success">/WEB-INF/pages/category.jsp</result>
+		</action>
+                <action name="viewCart"
+			class="action.CartAction" method="viewCart">
+			<result name="success">/WEB-INF/pages/cart.jsp</result>
+		</action>
+                
+                <action name="updateCart"
+			class="action.CartAction" method="updateCart">
+			<result name="success">/WEB-INF/pages/cart.jsp</result>
+		</action>
+                
+                <action name="customerRecipt"
+			class="action.CustomerReciptAction" method="customerRecipt">
+			<result name="success">/WEB-INF/pages/checkout.jsp</result>
+		</action>
+               <action name="admin"
+			class="action.AdminAction">
+			<result name="success">/admin/admin.jsp</result>
+		</action>
+                 <action name="viewCustomers"
+			class="action.AdminAction" method="viewCustomers">
+			<result name="success">/admin/admin.jsp</result>
+		</action>
+                   <action name="viewCustomerReport"
+			class="action.AdminAction" method="viewCustomerReport">
+			<result name="success">/admin/admin.jsp</result>
+		</action>
+                <action name="viewOrders"
+			class="action.AdminAction" method="viewOrders">
+			<result name="success">/admin/admin.jsp</result>
+		</action>
+                <action name="viewOrdersReport"
+			class="action.AdminAction" method="viewOrdersReport">
+			<result name="success">/admin/admin.jsp</result>
+		</action>
+                <!-- Chart rendering -->
+       <action name="graph" class="action.GraphAction" method="execute">
+            <result name="success">/admin/graph.jsp</result>      
+        </action> 
+        <action name="drawgraph" class="action.GraphAction" method="drawgraph">
+            <result name="success">/admin/graph.jsp</result>      
+        </action> 
+        
+        <action name="resend" class="action.GraphAction" method="resend">
+            <result name="success">/admin/chart.jsp</result>      
+        </action> 
+        
+        
+                   <!-- logout -->
+             <action name="logout"
+			class="action.AdminAction" method="logout">
+			<result name="success">/CustLogin.jsp</result>
+		</action>
+                
+                <!-- Add Product -->
+                        <action name="addProduct"
+			class="action.AdminAction" method="addProduct">
+			<result name="success">/admin/addProduct.jsp</result>
+		</action>
+                <action name="saveProduct"
+			class="action.AdminAction" method="saveProduct">
+			<result name="success">/admin/addProduct.jsp</result>
+		</action>
+        </package> 
+        
+</struts>

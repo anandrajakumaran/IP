@@ -1,0 +1,127 @@
+
+package controller;
+
+import shoppingCart.ShoppingCart;
+
+import hibernate.Product;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import javax.ejb.EJB;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+import hibdao.CategoryDao;
+//import dao.CategoryFacade;
+//import dao.CustomerFacade;
+import hibdao.ProductDao;
+//import dao.ProductFacade;
+import java.io.BufferedOutputStream;
+import java.io.Closeable;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.servlet.ServletOutputStream;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import validate.Validator;
+
+/**
+ *
+ * @author 
+ */
+@WebServlet(name = "imageServlet",
+            loadOnStartup = 1,
+            urlPatterns = {"/showProduct",
+                        }
+)
+public class ImageServlet extends HttpServlet {
+
+    private String surcharge;
+
+//    @EJB
+//    private CategoryFacade categoryFacade;
+//    @EJB
+//    private ProductFacade productFacade;
+//     @EJB
+//    private CustomerFacade customerFacade;
+  //  @EJB
+//    private CategoryDaoInterface categoryDao;
+//    @EJB
+//    private ProductDaoInterface ProductDao;
+//    @EJB
+//    private LoginDaoIntterface loginDao; 
+    private ServletOutputStream OutputStreamout;
+
+    @Override
+    public void init(ServletConfig servletConfig) throws ServletException {
+        CategoryDao categoryDao = new CategoryDao();
+     super.init(servletConfig);
+     surcharge = servletConfig.getServletContext().getInitParameter("deliverySurcharge");
+
+     // getServletContext().setAttribute("categories", categoryDao.fetchCategories());
+    }
+
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        ProductDao productDao = new ProductDao();
+        String userPath = request.getServletPath();
+        HttpSession session = request.getSession();
+
+    if(userPath.equals("/showProduct")){
+            userPath = "/showProduct";
+            
+            String productId = request.getQueryString();
+            System.out.println("productId=-->"+productId);
+            
+            ServletOutputStream sos = response.getOutputStream();
+            //response.setContentType("image/png");
+            Product product = productDao.getProduct(Integer.parseInt(productId));
+
+            byte[] imgBytes = product.getImage();
+            System.out.println(" imgBytes "+imgBytes);
+            if (imgBytes != null) {
+                    // Prepare streams.
+            BufferedOutputStream output = null;
+            // Init servlet response.
+            response.reset();
+            response.setBufferSize(10240);
+            response.setContentType("image/png");
+            response.setContentLength(imgBytes.length);
+            response.setHeader("Content-Disposition", "inline; filename=\"sss\"");
+            try {
+            // Open streams.
+                output = new BufferedOutputStream(response.getOutputStream(), 10240);
+
+                // Write file contents to response.
+            output.write(imgBytes);
+            } finally {
+                // Gently close streams.
+             if (output != null) {
+                try {
+                       output.close();
+                } catch (IOException e) {
+                 e.printStackTrace();
+               }
+              }               
+             }
+            } 
+                sos.close();
+        } 
+    }
+}

@@ -1,0 +1,64 @@
+<%-- HTML markup starts below --%>
+        <%
+          if(session.getAttribute("user") == null)
+            {
+              response.sendRedirect("CustLogin.jsp");
+            }
+        %>
+
+    <table style="border: none;padding-right: 7cm">
+    <tr>
+    <c:forEach var="category" items="${categories}">
+        <td>
+        <c:choose>
+            <c:when test="${category.name == selectedCategory.name}">
+                <div class="menuButton" id="selectedMenu">
+                    <span class="menuText">
+                      ${category.name}
+                    </span>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <a href="<c:url value='category?${category.id}'/>" class="menuButton">
+                    <span class="menuText">
+                       ${category.name}
+                    </span>
+                </a>
+            </c:otherwise>
+        </c:choose>
+        </td>
+    </c:forEach>
+</tr>
+    </table>
+
+<div id ="main" >
+
+    <table id="" style="background-color: white;border-style: double;border-color: black">
+    <tr>
+        <c:forEach var="product" items="${searchProducts}" varStatus="loop">
+            <c:if test="${not loop.first and loop.index % 3 == 0}">
+                </tr><tr>
+            </c:if>
+            <td width="20%">
+                <a href="<c:url value='viewProduct?${product.id}'/>" style="">
+                <img src="<c:url value='showProduct?${product.id}'/>"
+                         alt="${product.name}">    
+                     <br>
+                           ${product.name} $
+                          <fmt:formatNumber value="${product.price}"/>
+                                          
+                    <br>
+                    </a>
+                    <form action="<c:url value='addToCart'/>" method="post">
+                        <input type="hidden"
+                               name="productId"
+                               value="${product.id}">
+                        <input type="submit"
+                               name="submit"
+                               value="AddToCart">
+                    </form>
+                </td>
+        </c:forEach>
+    </tr>
+</table>
+</div>

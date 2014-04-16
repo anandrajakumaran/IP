@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/shoppingcart2/!svn/ver/2/trunk/src/java/controller
+END
+ImageServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/shoppingcart2/!svn/ver/5/trunk/src/java/controller/ImageServlet.java
+END
+CustomerRecipt.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/shoppingcart2/!svn/ver/2/trunk/src/java/controller/CustomerRecipt.java
+END
+RegisterServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/shoppingcart2/!svn/ver/4/trunk/src/java/controller/RegisterServlet.java
+END
+SearchServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/shoppingcart2/!svn/ver/2/trunk/src/java/controller/SearchServlet.java
+END
+ShoppingServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/shoppingcart2/!svn/ver/8/trunk/src/java/controller/ShoppingServlet.java
+END
+AdminServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/shoppingcart2/!svn/ver/2/trunk/src/java/controller/AdminServlet.java
+END
+LoginServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/shoppingcart2/!svn/ver/2/trunk/src/java/controller/LoginServlet.java
+END
+AddProductServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/shoppingcart2/!svn/ver/2/trunk/src/java/controller/AddProductServlet.java
+END

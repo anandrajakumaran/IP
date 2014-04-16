@@ -1,0 +1,88 @@
+
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/shoppingCart/css/shoppingcart.css">
+
+        <script src="/shoppingCart/js/jquery-1.4.2.js" type="text/javascript"></script>
+        <script src="/shoppingCart/js/jquery-ui-1.8.4.custom.min.js" type="text/javascript"></script>
+
+        <title>Shopping Cart</title>
+    </head>
+
+    <body>
+        <div id="main">
+            <div id="header">
+                
+     
+               
+                <p><s:a action="logout" cssStyle="float: right;margin-right: 1cm">Log out</s:a></p>
+                
+                
+                               <%
+                if(session.getAttribute("adminAcc") == "yes")
+            { %>
+            <p>
+                <a href="<c:url value='admin'/>" style="float: right;">
+                <img src="/shoppingCart/img/admin.png" id="logoText" alt="Admin">
+                </a>
+            <%  }
+            %>
+            <br>     <br>     <br>
+                <a href="<c:url value='/index.jsp'/>">
+                    <img src="/shoppingCart/img/logo.png" id="logo" alt="Shopping Cart logo">
+                </a>
+                <a href="<c:url value='/index.jsp'/>">
+                <img src="/shoppingCart/img/logoText.png" id="logoText" alt="Shopping cart">
+                </a>
+         
+          <c:if test="${!empty cart && cart.numberOfItems != 0 &&
+
+                                  !fn:contains(pageContext.request.servletPath,'/checkout') &&
+                                  requestScope['javax.servlet.forward.servlet_path'] ne '/checkout' &&
+
+                                  !fn:contains(pageContext.request.servletPath,'/cart') &&
+                                  requestScope['javax.servlet.forward.servlet_path'] ne '/cart' &&
+
+                                  validationErrorFlag ne true &&
+                                  orderFailureFlag ne true}">
+
+                 
+               <a href="<c:url value='checkout'/>" style="float:right;margin-right: 1cm">
+                <img src="/shoppingCart/img/buyNow.png" id="logoText" alt="Buy Now">
+               </a>
+                </c:if>
+                
+                <div  style="float:right">
+                    <c:if test="${!empty cart && cart.numberOfItems != 0 &&
+                    !fn:contains(pageContext.request.servletPath,'/cart') &&
+                    requestScope['javax.servlet.forward.servlet_path'] ne '/cart'}">
+                <a href="<c:url value='viewCart'/>" style="float:right;margin-right: 1cm" class="nocolor">
+                    <img src="/shoppingCart/img/view.png" id="logoText" alt="Buy Now">
+                </a>
+            <c:choose>
+                <c:when test="${cart.numberOfItems == null}">
+                    0
+                </c:when>
+                <c:otherwise>
+                    ${cart.numberOfItems}
+                </c:otherwise>
+            </c:choose>              
+                Items 
+            </c:if>
+            </div>
+
+            <br>
+            <br>
+            <div style="float: left;height: 1cm" >                        
+
+                    </div>
+            </div>

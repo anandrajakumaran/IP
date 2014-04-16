@@ -1,0 +1,117 @@
+
+package controller;
+
+
+
+import java.io.IOException;
+import javax.ejb.EJB;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+//import dao.RegisterDaoInterface;
+import hibdao.RegisterDao;
+import validate.Validator;
+
+/**
+ *
+ * @author 
+ */
+@WebServlet(name = "RegistetServlet",
+            loadOnStartup = 1,
+            urlPatterns = {
+                           "/register",
+                           "/saveRegister",
+                           }
+)
+public class RegisterServlet extends HttpServlet {
+
+
+//   @EJB
+//   private RegisterDaoInterface registerDao;
+   
+
+
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String userPath = request.getServletPath();
+      
+        // use RequestDispatcher to forward request internally
+        String url = "/WEB-INF/pages" + userPath + ".jsp";
+
+        try {
+            request.getRequestDispatcher(url).forward(request, response);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+    String userPath = request.getServletPath();
+    Validator validator = new Validator();
+
+     if(userPath.equals("/saveRegister"))
+        {
+            System.out.println("Inside Register-------->");
+            RegisterDao registerDao = new RegisterDao();
+                String name = request.getParameter("name");
+                String email = request.getParameter("email");
+                String phone = request.getParameter("phone");
+                String username = request.getParameter("username");
+                String address = request.getParameter("address");
+                String password = request.getParameter("password");
+                String confirm = request.getParameter("confirm");
+                // validate user data
+                boolean registerValidation = false;
+   //             registerValidation = validator.validateRegisteration(name,email,phone,username,password,confirm,address,request);
+                try{
+                // if validation error found, return user to checkout
+                if (registerValidation == true) {
+                    System.out.println("Inside Flag-------->");
+                    request.setAttribute("validationErrorFlag", registerValidation);
+                    userPath = "/register";
+                    
+                    // otherwise, save order to database
+                } else if( registerDao.saveRegisteration(name, email, phone,username, password, address) == 1) {
+
+                      userPath = "/registerSuccess";
+                } else if(registerDao.saveRegisteration(name, email, phone,username, password, address) == 0){
+                                          userPath = "/registerFailure";
+
+                }}
+                catch(Exception e){
+                    e.printStackTrace();
+                    userPath = "/registerFailure";
+
+                }
+        } 
+        // use RequestDispatcher to forward request internally
+        String url = "/WEB-INF/pages" + userPath + ".jsp";
+
+        try {
+            request.getRequestDispatcher(url).forward(request, response);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+}

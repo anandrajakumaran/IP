@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/shoppingcart2/!svn/ver/2/trunk/lib
+END
+mysql-connector-java-5.1.21-bin.jar
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/shoppingcart2/!svn/ver/2/trunk/lib/mysql-connector-java-5.1.21-bin.jar
+END
+org.apache.commons.io.jar
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/shoppingcart2/!svn/ver/2/trunk/lib/org.apache.commons.io.jar
+END
+poi-3.7-20101029.jar
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/shoppingcart2/!svn/ver/2/trunk/lib/poi-3.7-20101029.jar
+END
+commons-fileupload-1.2.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/shoppingcart2/!svn/ver/2/trunk/lib/commons-fileupload-1.2.2.jar
+END
+commons-digester-2.0.jar
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/shoppingcart2/!svn/ver/2/trunk/lib/commons-digester-2.0.jar
+END
+commons-logging-1.0.4.jar
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/shoppingcart2/!svn/ver/2/trunk/lib/commons-logging-1.0.4.jar
+END
+commons-beanutils-1.8.0.jar
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/shoppingcart2/!svn/ver/2/trunk/lib/commons-beanutils-1.8.0.jar
+END

@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibdao
+END
+OrderDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibdao/OrderDao.java
+END
+OrderDaoInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibdao/OrderDaoInterface.java
+END
+CategoryDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibdao/CategoryDao.java
+END
+CategoryDaoInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibdao/CategoryDaoInterface.java
+END
+ProductDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibdao/ProductDao.java
+END
+ProductDaoInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibdao/ProductDaoInterface.java
+END
+RegisterDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibdao/RegisterDao.java
+END
+RegisterDaoInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibdao/RegisterDaoInterface.java
+END
+TransactionDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibdao/TransactionDao.java
+END
+TransactionDaoInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibdao/TransactionDaoInterface.java
+END
+LoginDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibdao/LoginDao.java
+END
+LoginDaoInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibdao/LoginDaoInterface.java
+END

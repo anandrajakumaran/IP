@@ -1,0 +1,193 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package controller;
+
+import hibdao.ProductDao;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FilenameUtils;
+
+
+/**
+ *
+ * @author anand
+ */
+@WebServlet(name = "AddProductServlet", urlPatterns = {"/admin/addProduct",
+                                                       "/admin/saveProduct"})
+public class AddProductServlet extends HttpServlet {
+//    @EJB
+//   private ProductDaoInterface productDao;
+     private String userPath;
+
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, FileUploadException {
+        ProductDao productDao = new ProductDao();
+        HttpSession session = request.getSession(true);
+        userPath = request.getServletPath();
+              
+        if (userPath.equals("/admin/addProduct")) {
+
+                  System.out.println("Inside add product"+userPath);
+                  
+        } else if (userPath.equals("/admin/saveProduct")) {
+             String name =null ;
+             String detail = null;
+             String description = null;
+             float price = 0;
+             String category = null;
+             byte[] bytes = new byte[1024*1024]; // some maximum size
+
+       try {
+                List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
+                for (FileItem item : items) {
+                                 
+
+
+                if (item.isFormField()) { // Process regular form field (input
+                                                                                // type="text|radio|checkbox|etc",                                              // select, etc).
+               String fieldname = item.getFieldName();     
+               String fieldvalue = item.getString();
+               
+                   System.out.println("Is Form Field");
+                    System.out.println(fieldname + " " + fieldvalue);
+               if("name".equals(fieldname) && fieldname != null){
+                                      
+              name =   fieldvalue; 
+                   
+                 
+               }else if("price".equals(fieldname) && fieldname != null){
+                                    price =  Float.parseFloat(fieldvalue) ; 
+
+               }else if("description".equals(fieldname) && fieldname != null){
+                                    description =   fieldvalue; 
+
+               }else if("detail".equals(fieldname) && fieldname != null){
+                                    detail =   fieldvalue; 
+
+               }else if("category".equals(fieldname) && fieldname != null){
+                                    category=   fieldvalue.substring(0, 1); 
+                                    System.out.println("Category for saving--?"+category);
+
+               }
+//INFO:   Is Form Field
+//INFO:   name Anand
+//INFO:   Is Form Field
+//INFO:   price 123
+//INFO:   Is Form Field
+//INFO:   description waewed
+//INFO:   Is Form Field
+//INFO:   detail qwdqwewewee
+//INFO:   Is File
+//INFO:   image shopping-bags-icon.png java.io.ByteArrayInputStream@36ecd181
+                
+                 //   no2.add(fieldvalue);
+					// ... (do your job here)
+				} else { // Process form file field (input type="file").
+					String fieldname = item.getFieldName();
+					String filename = FilenameUtils.getName(item.getName());
+					InputStream filecontent = item.getInputStream();
+
+                                         int byteSize = filecontent.read(bytes);
+					System.out.println("Is File");
+					System.out.println(fieldname + " " + filename + " " + filecontent);
+					// ... (do your job here)
+                                        //product.setImageFile(bytes);
+				//	saveFile(item);
+					
+					//request.getRequestDispatcher("ProdSuccess.jsp").forward(request, response);
+
+				}
+			 }
+                
+              int i =   productDao.saveProduct(name,price,description,detail,category,bytes);
+              userPath = "/admin/addProduct";
+        } catch (FileUploadException e) {
+            throw new ServletException("Cannot parse multipart request.", e);
+        }
+   
+        }
+            
+        try {
+                request.getRequestDispatcher(userPath+".jsp").forward(request, response);        
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         try {
+             processRequest(request, response);
+         } catch (FileUploadException ex) {
+             Logger.getLogger(AddProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         try {
+             processRequest(request, response);
+         } catch (FileUploadException ex) {
+             Logger.getLogger(AddProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}

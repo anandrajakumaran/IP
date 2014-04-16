@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 24, 2014 3:50:11 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="hibernate.Product" table="product" catalog="shoppingcart">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="category" class="hibernate.Category" fetch="select">
+            <column name="category_id" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="45" not-null="true" />
+        </property>
+        <property name="price" type="big_decimal">
+            <column name="price" precision="10" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" />
+        </property>
+        <property name="detail" type="string">
+            <column name="detail" length="65535" />
+        </property>
+        <property name="image" type="binary">
+            <column name="image" />
+        </property>
+        
+        <property name="lastUpdate" type="timestamp">
+            <column name="last_update" length="19" not-null="true" />
+        </property>
+        <set name="productOrders" table="product_order" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="product_id" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.ProductOrder" />
+        </set>
+        <property name="sellerId" type="string">
+            <column name="sellerid" />
+        </property>
+    </class>
+</hibernate-mapping>

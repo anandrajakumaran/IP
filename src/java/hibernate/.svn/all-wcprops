@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibernate
+END
+Product.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibernate/Product.java
+END
+ProductOrder.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibernate/ProductOrder.hbm.xml
+END
+Category.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibernate/Category.hbm.xml
+END
+Customer.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibernate/Customer.java
+END
+CustomerOrder.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibernate/CustomerOrder.hbm.xml
+END
+Product.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibernate/Product.hbm.xml
+END
+Customer.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibernate/Customer.hbm.xml
+END
+ProductOrderId.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibernate/ProductOrderId.java
+END
+ProductOrder.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibernate/ProductOrder.java
+END
+Category.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibernate/Category.java
+END
+CustomerOrder.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/shoppingcart2/!svn/ver/2/trunk/src/java/hibernate/CustomerOrder.java
+END

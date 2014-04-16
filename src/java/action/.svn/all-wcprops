@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/shoppingcart2/!svn/ver/2/trunk/src/java/action
+END
+ImageAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/shoppingcart2/!svn/ver/8/trunk/src/java/action/ImageAction.java
+END
+ImageResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/shoppingcart2/!svn/ver/5/trunk/src/java/action/ImageResult.java
+END
+RegisterAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/shoppingcart2/!svn/ver/4/trunk/src/java/action/RegisterAction.java
+END
+CategoryListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/shoppingcart2/!svn/ver/5/trunk/src/java/action/CategoryListener.java
+END
+ShoppingAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/shoppingcart2/!svn/ver/8/trunk/src/java/action/ShoppingAction.java
+END
+LoginAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/shoppingcart2/!svn/ver/5/trunk/src/java/action/LoginAction.java
+END
+CartAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/shoppingcart2/!svn/ver/8/trunk/src/java/action/CartAction.java
+END

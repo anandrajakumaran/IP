@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/shoppingcart2/!svn/ver/2/trunk/web/WEB-INF
+END
+sun-web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/shoppingcart2/!svn/ver/2/trunk/web/WEB-INF/sun-web.xml
+END
+beans.xml
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/shoppingcart2/!svn/ver/2/trunk/web/WEB-INF/beans.xml
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/shoppingcart2/!svn/ver/6/trunk/web/WEB-INF/web.xml
+END
+glassfish-web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/shoppingcart2/!svn/ver/2/trunk/web/WEB-INF/glassfish-web.xml
+END

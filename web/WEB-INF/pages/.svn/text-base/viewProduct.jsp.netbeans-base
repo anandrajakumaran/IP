@@ -1,0 +1,62 @@
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
+        <%
+          if(session.getAttribute("user") == null)
+            {
+              response.sendRedirect("CustLogin.jsp");
+            }
+        %>
+
+    <table style="border: none;">
+    <tr>
+    <c:forEach var="category" items="${categories}">
+        <td>
+        <c:choose>
+            <c:when test="${category.name == selectedCategory.name}">
+                <div class="menuButton" id="selectedMenu">
+                    <span class="menuText">
+                      ${category.name}
+                    </span>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <a href="<c:url value='category?${category.id}'/>" class="menuButton">
+                    <span class="menuText">
+                       ${category.name}
+                    </span>
+                </a>
+            </c:otherwise>
+        </c:choose>
+        </td>
+    </c:forEach>
+</tr>
+    </table>
+
+<br><br>
+<div id ="main" >
+    <a href="<c:url value='category?${category.id}'/>" > Back </a>
+  <table style="background-color: white;border-style: double;border-color: black;width: 21cm">
+   <tr>
+    <td width="158" height="80"><p> 
+                 <s:url id="image2" action="showImage" var="imageUrl2">
+                        <s:param name="productId">${productDetails.id}</s:param>
+                   </s:url>     
+      <img src=" <s:property value="#imageUrl2"/>" alt="${productDetails.name}"> </p>
+         <h2 style="color: black">${productDetails.name}</h2> 
+                  <form action="<c:url value='addToCart'/>" method="post">
+                        <input type="hidden"
+                               name="productId"
+                               value="${productDetails.id}">
+                        <input type="submit"
+                             
+                               value="AddToCart">
+                    </form>
+    </td>   
+    <td width="568" valign="top">
+        <p>${productDetails.detail}</p>
+    </td>
+  </tr>
+  
+
+ </table>
+</div>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 24, 2014 3:50:11 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="hibernate.CustomerOrder" table="customer_order" catalog="shoppingcart">
+        <id name="id" type="string">
+            <column name="id" length="20" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="customer" class="hibernate.Customer" fetch="select">
+            <column name="customer_id" length="20" not-null="true" />
+        </many-to-one>
+        <property name="amount" type="big_decimal">
+            <column name="amount" precision="6" not-null="true" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="date_created" length="19" not-null="true" />
+        </property>
+        <property name="modePayment" type="string">
+            <column name="mode_payment" length="20" />
+        </property>
+        <property name="cardNumber" type="string">
+            <column name="card_number" length="20" />
+        </property>
+        <property name="confirmationNumber" type="int">
+            <column name="confirmation_number" not-null="true" />
+        </property>
+        <set name="productOrders" table="product_order" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="customer_order_id" length="20" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.ProductOrder" />
+        </set>
+    </class>
+</hibernate-mapping>

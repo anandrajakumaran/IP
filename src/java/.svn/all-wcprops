@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/shoppingcart2/!svn/ver/2/trunk/src/java
+END
+struts.xml
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/shoppingcart2/!svn/ver/8/trunk/src/java/struts.xml
+END
+example.xml
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/shoppingcart2/!svn/ver/2/trunk/src/java/example.xml
+END
+hibernate.cfg.xml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/shoppingcart2/!svn/ver/4/trunk/src/java/hibernate.cfg.xml
+END

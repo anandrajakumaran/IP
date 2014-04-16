@@ -1,0 +1,79 @@
+package controller;
+
+//import entity.Customer;
+import hibernate.Customer;
+import java.io.IOException;
+import javax.ejb.EJB;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+//import dao.LoginDaoIntterface;
+import hibdao.LoginDaoInterface;
+import hibdao.LoginDao;
+import javax.naming.InitialContext;
+/**
+ * Servlet implementation class LoginServlet
+ */
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
+    
+//@EJB
+//private LoginDaoIntterface loginDao;     
+private Customer customer;
+
+        /**
+         * @see HttpServlet#HttpServlet()
+         */
+        public LoginServlet() {
+            super();
+        }
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            
+        System.out.println("<==== Inside login Do:Post Method =====>");
+
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        
+       try { 
+        InitialContext ic = new InitialContext();
+//        loginDao = (LoginDaoIntterface) ic.lookup(LoginDaoIntterface.class.getName());
+        LoginDao loginDao = new LoginDao();
+        customer=loginDao.findByIdAndPassword(username, password);
+        
+        if(customer != null)
+                {
+                    HttpSession session = request.getSession(true);
+                    session.setAttribute("custName",customer.getName());
+                    session.setAttribute("user", customer.getId());
+                    session.setAttribute("Cust", customer);
+                    if("Y".equals(customer.getAdminFlag()))
+                        {
+                            session.setAttribute("adminAcc", "yes");
+                        }
+				//response.sendRedirect(request.getHeader("Referer"));
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }   
+           }
+       catch (Exception e) 
+        {
+               request.getRequestDispatcher("loginError.jsp").forward(request, response);
+               System.out.println("<==== User Not Registered=====>");
+               System.out.println(e.getMessage());
+        }
+    }
+
+}

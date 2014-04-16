@@ -1,0 +1,66 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package action;
+
+import com.opensymphony.xwork2.ActionInvocation;
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Result;
+import hibdao.ProductDao;
+import hibernate.Product;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.struts2.ServletActionContext;
+
+/**
+ *
+ * @author Anand
+ */
+public class ImageResult implements Result {
+    private String productId;
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+    
+    public void execute(ActionInvocation invocation) throws IOException{
+ImageAction action = (ImageAction) invocation.getAction();
+HttpServletResponse response = ServletActionContext.getResponse();
+     ServletOutputStream sos = response.getOutputStream();
+            BufferedOutputStream output = null;
+             byte[] imgBytes = action.getCustomImageInBytes();
+System.out.println("imgBytes--->"+imgBytes.toString());
+  
+    response.reset();
+    response.setBufferSize(10240);
+    response.setContentType("image/png");
+    response.setContentLength(action.getCustomImageInBytes().length);
+       response.setHeader("Content-Disposition", "inline; filename=\"sss\"");
+    //response.getOutputStream().write(action.getCustomImageInBytes());
+   // response.getOutputStream().flush();
+        try {
+                    output = new BufferedOutputStream(response.getOutputStream(), 10240);
+            output.write(imgBytes);
+        }
+            finally {
+                // Gently close streams.
+             if (output != null) {
+                try {
+                       output.close();
+                } catch (IOException e) {
+                 e.printStackTrace();
+               }
+              }               
+             }
+    }
+    
+}

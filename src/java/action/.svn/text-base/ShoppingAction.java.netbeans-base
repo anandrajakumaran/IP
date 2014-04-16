@@ -1,0 +1,175 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package action;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import hibdao.CategoryDao;
+import hibdao.ProductDao;
+import hibernate.Category;
+import hibernate.Product;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import org.apache.struts2.ServletActionContext;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+
+/**
+ *
+ * @author Anand
+ */
+public class ShoppingAction extends ActionSupport{
+    private SessionFactory sessionFactory ;
+    private org.hibernate.Session hibsession ;
+    
+    private List<Category> fetchCategories;
+    private Category category;
+    private Product product;
+    private String categoryId;
+    private String productId;
+    private String search;
+    public List<Category> getFetchCategories() {
+        return fetchCategories;
+    }
+
+    public void setFetchCategories(List<Category> fetchCategories) {
+        this.fetchCategories = fetchCategories;
+    }
+    
+     public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    public Session getHibsession() {
+        return hibsession;
+    }
+
+    public void setHibsession(Session hibsession) {
+        this.hibsession = hibsession;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
+    }
+    
+    public String execute(){
+        CategoryDao categoryDao = new CategoryDao();
+        Map sessionMap = ActionContext.getContext().getSession();
+        sessionMap.put("categories", categoryDao.fetchCategories());
+        return "success";
+    }
+
+   
+    
+        public String showCategoryProducts(){
+                Collection<hibernate.Product> categoryProducts;
+  
+        if (categoryId != null) {
+                
+         Category category = new Category();
+    sessionFactory    = new Configuration().configure().buildSessionFactory();
+    hibsession       = sessionFactory.openSession();
+    Transaction tx = null;
+                           Map session = ActionContext.getContext().getSession();
+
+    try{
+        tx = hibsession.beginTransaction();
+        category = (Category)hibsession.createQuery("FROM Category c WHERE c.id = :id")
+                .setParameter("id", Integer.parseInt(categoryId)).uniqueResult();
+                              session.put("selectedCategory", category);
+                categoryProducts = category.getProducts();
+               session.put("categoryProducts", categoryProducts);
+
+    }
+    catch(HibernateException e){
+        e.printStackTrace();
+    }finally{
+       
+    }
+       }
+    return SUCCESS;
+
+ }
+        
+       public String viewProduct()
+      {
+          ProductDao productDao = new ProductDao();
+          Product product = productDao.getProduct(Integer.parseInt(productId));
+             Map sessionMap = ActionContext.getContext().getSession();
+        sessionMap.put("productDetails", product);
+
+        return SUCCESS;
+            
+        }
+       
+     public String searchProduct(){
+        Collection<Product> searchProducts;
+
+        ProductDao productDao = new ProductDao();
+         HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        if(search != null){
+                searchProducts = productDao.getProducts(search);    
+                session.setAttribute("searchProducts", searchProducts);
+                System.out.println("categoryProducts-->"+searchProducts.size());
+            }
+         
+         return SUCCESS;
+     }
+     
+     public String checkout(){
+         
+         return SUCCESS;
+     }
+}
